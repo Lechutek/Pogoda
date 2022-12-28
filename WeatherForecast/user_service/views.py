@@ -1,22 +1,17 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.views import View
 
 from .forms import MySignupForm
 
 
-def register_view(request):
-    if request.method == "POST":
+class RegisterView(View):
+    def post(self, request):
         form = MySignupForm(request.POST)
         if form.is_valid():
-            gotowe = form.cleaned_data
-            print(gotowe)
+            obj = form.cleaned_data
             form.save()
-            return redirect(to=reverse("main"))
-    form = MySignupForm()
-    return render(request, "registration/register.html", {"form": form})
+            return redirect("submit_location")
 
-
-@login_required
-def main_view(request):
-    return render(request, "main.html")
+    def get(self, request):
+        form = MySignupForm()
+        return render(request, "registration/register.html", {"form": form})

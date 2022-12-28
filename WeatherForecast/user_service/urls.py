@@ -32,6 +32,5 @@ urlpatterns = [
         PasswordResetCompleteView.as_view(),
         name="password_reset_complete",
     ),
-    path("registration", views.register_view, name="registration"),
-    path("", views.main_view, name="main"),
+    path("registration", views.RegisterView.as_view(), name="registration"),
 ]

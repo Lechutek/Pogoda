@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "user_service",
+    "show_weather",
+    "favourite",
 ]
 
 MIDDLEWARE = [
@@ -119,5 +121,5 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "main"
+LOGIN_REDIRECT_URL = "submit_location"
 LOGOUT_REDIRECT_URL = "login"
